@@ -7,6 +7,6 @@ const server = createServer(app);
 
 const port = getEnv('PORT', 3000);
 
-server.listen(port, () => {
-  return console.log(`Server is up and listening on ${port}`);
-});
+server.listen(port, () =>
+  console.info(`Server is up and listening on ${port}`)
+);

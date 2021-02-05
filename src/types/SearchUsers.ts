@@ -23,5 +23,5 @@ interface Item {
 export default interface SearchResultType {
   totalCount?: number;
   incompleteResults?: boolean;
-  items?: [Item];
+  items?: Item[];
 }

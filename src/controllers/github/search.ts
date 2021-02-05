@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { search as searchService } from '../../services/github';
+import { searchOrCache } from '../../services/search';
 
 async function search(request: Request, response: Response): Promise<Response> {
   try {
@@ -7,11 +7,12 @@ async function search(request: Request, response: Response): Promise<Response> {
       body: { type, query },
     } = request;
 
-    const result = await searchService({ type, query });
+    const result = await searchOrCache({ type, query });
 
     return response.status(200).send(result);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return response.sendStatus(500);
   }
 }
 
