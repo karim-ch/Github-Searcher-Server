@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import client from './client';
+import { SearchType } from '../../types';
 
 interface SearchQuery {
-  type: 'users' | 'repos';
+  type: SearchType;
   query?: string;
 }
 
-function getSearches({ type, query }: SearchQuery): Promise<string> {
+function getCachedSearch({ type, query }: SearchQuery): Promise<string> {
   // @ts-ignore
   return client.hgetAsync(type, query);
 }
 
-export default getSearches;
+export default getCachedSearch;

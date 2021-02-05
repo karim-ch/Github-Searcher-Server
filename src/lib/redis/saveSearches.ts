@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import client from './client';
+import { SearchType } from '../../types';
 
 interface Cache {
-  type: 'users' | 'repos';
-  query: string;
+  type: SearchType;
+  query?: string;
   data: string;
 }
 

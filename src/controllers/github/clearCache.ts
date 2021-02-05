@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import { reset } from '../../lib/redis';
 
-async function resetSearch(
+async function clearCache(
   request: Request,
   response: Response
 ): Promise<Response> {
@@ -17,6 +17,6 @@ async function resetSearch(
 
 export default {
   method: 'get',
-  path: '/app/reset',
-  handler: resetSearch,
+  path: '/api/clear-cache',
+  handler: clearCache,
 };

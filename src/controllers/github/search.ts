@@ -18,6 +18,6 @@ async function search(request: Request, response: Response): Promise<Response> {
 
 export default {
   method: 'post',
-  path: '/app/search',
+  path: '/api/search',
   handler: search,
 };

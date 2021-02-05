@@ -1,4 +1,4 @@
 import search from './search';
-import resetSearch from './resetSearch';
+import clearCache from './clearCache';
 
-export default [search, resetSearch];
+export default [search, clearCache];

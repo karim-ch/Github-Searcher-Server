@@ -1,13 +1,17 @@
 import { search } from '../../lib/github';
-import { getSearches, saveSearches } from '../../lib/redis';
+import { getCachedSearch, saveSearches } from '../../lib/redis';
+import { SearchType, GithubSearch } from '../../types';
 
 interface SearchQuery {
-  type: 'users' | 'repos';
+  type: SearchType;
   query?: string;
 }
 
-async function searchOrCache({ type, query }: SearchQuery) {
-  const cachedResults = await getSearches({ type, query });
+async function searchOrCache({
+  type,
+  query,
+}: SearchQuery): Promise<GithubSearch> {
+  const cachedResults = await getCachedSearch({ type, query });
   if (cachedResults) return JSON.parse(cachedResults);
   const data = await search({ type, query });
 

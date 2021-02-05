@@ -1,16 +1,13 @@
 import client from './client';
 import camelcaseKeys from 'camelcase-keys';
-import { SearchUsers, SearchRepositories } from '../../types';
+import { GithubSearch, SearchType } from '../../types';
 
 interface SearchQuery {
-  type: 'users' | 'repos';
+  type: SearchType;
   query?: string;
 }
 
-async function search({
-  type = 'users',
-  query = '',
-}: SearchQuery): Promise<SearchUsers | SearchRepositories> {
+async function search({ type, query }: SearchQuery): Promise<GithubSearch> {
   try {
     console.info('Fetching from github ...');
     const { data } = await client.request(`GET /search/${type}?q=${query}`);
