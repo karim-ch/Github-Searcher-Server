@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { reset } from '../../lib/redis';
+import { reset } from '@lib/redis';
 
 async function clearCache(
   request: Request,

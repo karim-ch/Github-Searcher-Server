@@ -1,6 +1,6 @@
 import redis from 'redis';
 import { promisifyAll } from 'bluebird';
-import { getEnv } from '../../utils/getEnv';
+import { getEnv } from '@utils/getEnv';
 
 promisifyAll(redis);
 

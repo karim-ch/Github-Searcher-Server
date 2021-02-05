@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import client from './client';
-import { SearchType } from '../../types';
+import { SearchType } from '@tsTypes/index';
 
 interface Cache {
   type: SearchType;

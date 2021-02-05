@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { searchOrCache } from '../../services/search';
+import { searchOrCache } from '@services/search';
 
 async function search(request: Request, response: Response): Promise<Response> {
   try {

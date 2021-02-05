@@ -1,6 +1,5 @@
 import { Octokit } from '@octokit/core';
-
-import { getEnv } from '../../utils/getEnv';
+import { getEnv } from '@utils/getEnv';
 
 const secretKey = getEnv('CLIENT_SECRET', '');
 

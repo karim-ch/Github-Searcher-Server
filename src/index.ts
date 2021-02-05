@@ -1,7 +1,8 @@
+import 'module-alias/register';
 import 'dotenv/config';
 import { createServer } from 'http';
 import app from './app';
-import { getEnv } from './utils/getEnv';
+import { getEnv } from '@utils/getEnv';
 
 const server = createServer(app);
 

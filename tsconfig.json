@@ -7,7 +7,15 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "lib": ["es6", "dom"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@utils/*": ["utils/*"],
+      "@controllers/*": ["controllers/*"],
+      "@lib/*": ["lib/*"],
+      "@tsTypes/*": ["types/*"],
+      "@services/*": ["services/*"]
+  }
   },
   "include": [
     "src/**/*.ts"

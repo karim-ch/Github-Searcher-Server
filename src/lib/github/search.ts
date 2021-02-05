@@ -1,6 +1,6 @@
 import client from './client';
 import camelcaseKeys from 'camelcase-keys';
-import { GithubSearch, SearchType } from '../../types';
+import { GithubSearch, SearchType } from '@tsTypes/index';
 
 interface SearchQuery {
   type: SearchType;

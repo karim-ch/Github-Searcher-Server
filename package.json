@@ -2,11 +2,12 @@
   "name": "github-search-server",
   "version": "1.0.0",
   "description": "Github search server with redis caching",
-  "main": "index.ts",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node dist/index.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "dev": "nodemon --exec \"npm run build && npm run start\" --watch src --ext ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -35,6 +36,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "lodash": "^4.17.20",
+    "module-alias": "^2.2.2",
     "redis": "^3.0.2"
+  },
+  "_moduleAliases": {
+    "@utils": "dist/utils",
+    "@controllers": "dist/controllers",
+    "@lib": "dist/lib",
+    "@types": "dist/tsTypes",
+    "@services": "dist/services"
   }
 }
