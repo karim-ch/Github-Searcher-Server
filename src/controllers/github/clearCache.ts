@@ -1,10 +1,7 @@
 import { Response, Request } from 'express';
 import { reset } from '@lib/redis';
 
-async function clearCache(
-  request: Request,
-  response: Response
-): Promise<Response> {
+async function clearCache(request: Request, response: Response): Promise<Response> {
   try {
     const result = await reset();
 

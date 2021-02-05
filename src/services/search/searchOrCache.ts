@@ -7,10 +7,7 @@ interface SearchQuery {
   query?: string;
 }
 
-async function searchOrCache({
-  type,
-  query,
-}: SearchQuery): Promise<GithubSearch> {
+async function searchOrCache({ type, query }: SearchQuery): Promise<GithubSearch> {
   const cachedResults = await getCachedSearch({ type, query });
   if (cachedResults) return JSON.parse(cachedResults);
   const data = await search({ type, query });

@@ -5,10 +5,7 @@ function getEnv(varName: string, defaultValue: string | number): any {
 }
 
 function getEnvVariables(...varNames: [string]): { [key: string]: string } {
-  return varNames.reduce(
-    (acc, varName) => ({ ...acc, [varName]: process.env[varName] }),
-    {}
-  );
+  return varNames.reduce((acc, varName) => ({ ...acc, [varName]: process.env[varName] }), {});
 }
 
 export { getEnvVariables, getEnv };
