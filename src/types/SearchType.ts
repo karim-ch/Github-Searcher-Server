@@ -1,6 +1,6 @@
 enum SearchType {
-  repository,
-  users,
+  repositories = 'repositories',
+  users = 'users',
 }
 
 export default SearchType;

@@ -1,4 +1,4 @@
-interface User {
+type User = {
   login: string;
   id: number;
   nodeId: number;
@@ -18,9 +18,9 @@ interface User {
   type: string;
   siteAdmin: boolean;
   score: number;
-}
+};
 
-interface Repository {
+type Repository = {
   id: number;
   nodeId: string;
   name: string;
@@ -106,7 +106,7 @@ interface Repository {
     pull: number;
   };
   score: number;
-}
+};
 
 export default interface GithubSearch {
   totalCount: number;
