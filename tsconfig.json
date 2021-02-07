@@ -11,10 +11,15 @@
     "baseUrl": "./src",
     "paths": {
       "@utils/*": ["utils/*"],
+      "@utils": ["utils"],
       "@controllers/*": ["controllers/*"],
+      "@controllers": ["controllers"],
       "@lib/*": ["lib/*"],
+      "@lib": ["lib"],
       "@tsTypes/*": ["types/*"],
-      "@services/*": ["services/*"]
+      "@tsTypes": ["types"],
+      "@services/*": ["services/*"],
+      "@services": ["services"]
   }
   },
   "include": [

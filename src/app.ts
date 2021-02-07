@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { applyRoutes } from '@utils/router';
-import controllers from '@controllers/index';
+import controllers from '@controllers';
 
 const app = express();
 app.use(bodyParser.json());

@@ -1,6 +1,6 @@
 import { search } from '@lib/github';
 import { getCachedSearch, saveSearches } from '@lib/redis';
-import { SearchType, GithubSearch } from '@tsTypes/index';
+import { SearchType, GithubSearch } from '@tsTypes';
 
 interface SearchQuery {
   type: SearchType;
