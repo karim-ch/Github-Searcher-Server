@@ -9,11 +9,11 @@ async function search(request: Request, response: Response): Promise<Response> {
 
     const result = await searchOrCache({ type, query });
 
-    return response.status(200).send(result);
+    return response.status(200).json(result);
   } catch (error) {
     const { message } = error;
     console.error(message);
-    return response.status(500).send(message);
+    return response.status(500).json(message);
   }
 }
 
