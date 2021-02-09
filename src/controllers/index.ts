@@ -1,4 +1,4 @@
-import { flatten } from 'lodash';
 import githubController from './github';
+import cacheController from './cache';
 
-export default flatten([githubController]);
+export default [...githubController, ...cacheController];

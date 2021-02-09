@@ -1,1 +1,1 @@
-export { default as searchOrCache } from './searchOrCache';
+export { default as search } from './search';

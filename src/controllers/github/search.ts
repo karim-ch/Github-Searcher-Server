@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { searchOrCache } from '@services/search';
+import { search as searchService } from '@services/search';
 
 async function search(request: Request, response: Response): Promise<Response> {
   try {
@@ -7,7 +7,7 @@ async function search(request: Request, response: Response): Promise<Response> {
       body: { type, query },
     } = request;
 
-    const result = await searchOrCache({ type, query });
+    const result = await searchService({ type, query });
 
     return response.status(200).json(result);
   } catch (error) {

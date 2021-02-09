@@ -1,13 +1,13 @@
 import client from './client';
 import camelcaseKeys from 'camelcase-keys';
-import { AdvancedUser } from '@tsTypes/GithubSearch';
+import { User } from '@tsTypes/GithubSearch';
 
-async function getUserDetails(login: string): Promise<AdvancedUser> {
+async function getUserDetails(user: User): Promise<User> {
   try {
-    const { data } = await client.request(`GET /users/${login}`);
-    return camelcaseKeys(data, { deep: true });
+    const { data } = await client.request(`GET /users/${user.login}`);
+    return { ...user, ...camelcaseKeys(data, { deep: true }) };
   } catch (error) {
-    return {};
+    return user;
   }
 }
 

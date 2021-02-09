@@ -1,15 +1,18 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import client from './client';
-import { SearchType } from '@tsTypes';
+import { GithubSearch, SearchType } from '@tsTypes';
 
 interface SearchQuery {
   type: SearchType;
   query?: string;
 }
 
-function getCachedSearch({ type, query }: SearchQuery): Promise<string> {
-  // @ts-ignore
-  return client.hgetAsync(type, query);
+function getCachedSearch({ type, query }: SearchQuery): Promise<GithubSearch> {
+  return new Promise((resolve, reject) =>
+    client.get(`${type}_${query}`, (error, result) => {
+      if (error) reject(error);
+      resolve(JSON.parse(result));
+    }),
+  );
 }
 
 export default getCachedSearch;

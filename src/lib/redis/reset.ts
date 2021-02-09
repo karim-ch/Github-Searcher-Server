@@ -1,9 +1,12 @@
 import client from './client';
 
 async function reset(): Promise<string> {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return client.flushallAsync();
+  return new Promise((resolve, reject) =>
+    client.flushall((error, result) => {
+      if (error) reject(error);
+      resolve(result);
+    }),
+  );
 }
 
 export default reset;

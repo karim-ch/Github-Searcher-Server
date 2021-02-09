@@ -1,6 +1,7 @@
 import client from './client';
 import camelcaseKeys from 'camelcase-keys';
 import { GithubSearch, SearchType } from '@tsTypes';
+import enrichUser from './enrichUser';
 
 interface SearchQuery {
   type: SearchType;
@@ -9,9 +10,9 @@ interface SearchQuery {
 
 async function search({ type, query }: SearchQuery): Promise<GithubSearch> {
   try {
-    console.info('Fetching from github ...');
     const { data } = await client.request(`GET /search/${type}?q=${query}`);
-    return camelcaseKeys(data, { deep: true });
+    const enrichedData = type === 'users' ? await enrichUser(data) : data;
+    return camelcaseKeys(enrichedData, { deep: true });
   } catch (error) {
     return {
       items: [],

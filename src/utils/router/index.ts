@@ -1,7 +1,13 @@
 import { forEach } from 'lodash';
-import { Express } from 'express';
+import { Express, RequestHandler } from 'express';
 
-export function applyRoutes(routes: [], app: Express): Express {
+interface Route {
+  handler: RequestHandler;
+  path: string;
+  method: string;
+}
+
+export function applyRoutes(routes: Route[], app: Express): Express {
   return forEach(routes, ({ method, path, handler }) => {
     app[method](path, handler);
   });
