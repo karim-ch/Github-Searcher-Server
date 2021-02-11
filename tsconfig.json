@@ -16,8 +16,8 @@
       "@controllers": ["controllers"],
       "@lib/*": ["lib/*"],
       "@lib": ["lib"],
-      "@tsTypes/*": ["types/*"],
-      "@tsTypes": ["types"],
+      "@Types/*": ["types/*"],
+      "@Types": ["types"],
       "@services/*": ["services/*"],
       "@services": ["services"]
   }

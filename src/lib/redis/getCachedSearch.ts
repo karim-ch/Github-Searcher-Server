@@ -1,5 +1,5 @@
 import client from './client';
-import { GithubSearch, SearchType } from '@tsTypes';
+import { GithubSearch, SearchType } from '@Types';
 
 interface SearchQuery {
   type: SearchType;

@@ -34,6 +34,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "joi": "^17.4.0",
     "lodash": "^4.17.20",
     "module-alias": "^2.2.2",
     "redis": "^3.0.2"
@@ -42,7 +43,7 @@
     "@utils": "dist/utils",
     "@controllers": "dist/controllers",
     "@lib": "dist/lib",
-    "@types": "dist/tsTypes",
+    "@Types": "dist/types",
     "@services": "dist/services"
   }
 }

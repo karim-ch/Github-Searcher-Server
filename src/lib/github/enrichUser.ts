@@ -1,4 +1,4 @@
-import { GithubSearch } from '@tsTypes';
+import { GithubSearch } from '@Types';
 import getUserDetails from '@lib/github/getUserDetails';
 
 async function enrichUser(data: GithubSearch): Promise<GithubSearch> {

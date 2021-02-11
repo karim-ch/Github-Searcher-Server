@@ -1,6 +1,6 @@
 import client from './client';
 import camelcaseKeys from 'camelcase-keys';
-import { User } from '@tsTypes/GithubSearch';
+import { User } from '@Types/GithubSearch';
 
 async function getUserDetails(user: User): Promise<User> {
   try {
