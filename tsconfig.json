@@ -20,12 +20,12 @@
       "@Types": ["types"],
       "@services/*": ["services/*"],
       "@services": ["services"]
-  }
+     }
   },
   "include": [
     "src/**/*.ts"
   ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }

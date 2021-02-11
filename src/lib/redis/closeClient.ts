@@ -1,12 +1,12 @@
 import client from './client';
 
-async function reset(): Promise<string> {
+async function closeClient(): Promise<string> {
   return new Promise((resolve, reject) =>
-    client.flushall((error, result) => {
+    client.quit((error, result) => {
       if (error) reject(error);
       resolve(result);
     })
   );
 }
 
-export default reset;
+export default closeClient;

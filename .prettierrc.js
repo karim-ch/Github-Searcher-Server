@@ -1,4 +1,4 @@
-{
+module.exports = {
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "insertPragma": false,
@@ -11,4 +11,4 @@
   "trailingComma": "all",
   "useTabs": false,
   "rangeStart": 0
-}
+};
