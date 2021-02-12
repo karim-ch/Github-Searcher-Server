@@ -7,10 +7,10 @@ async function clearCache(
 ): Promise<Response> {
   try {
     const result = await resetCache();
-
     return response.status(200).json(result);
   } catch (error) {
-    return response.sendStatus(500);
+    const { message } = error;
+    return response.status(500).json(message);
   }
 }
 
