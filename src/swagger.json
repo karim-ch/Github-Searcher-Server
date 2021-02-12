@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Github Searcher server",
+    "description": "Search any user or repository from github",
+    "version": "0.1"
+  },
+  "paths": {
+    "/api/search": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SearchType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of users or repositories",
+            "schema": {
+              "$ref": "#/definitions/GithubSearch"
+            }
+          },
+          "500": {
+            "description": "Returns an error message"
+          }
+        }
+      }
+    },
+    "/api/clear-cache": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Prints OK if the cache is cleared"
+          },
+          "500": {
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SearchType": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["users", "repositories"],
+          "default": "users",
+          "description": "Search type, can be either users or repositories"
+        },
+        "query": {
+          "type": "string",
+          "default": "username | repository name",
+          "description": "Search query"
+        }
+      }
+    },
+    "GithubSearch": {
+      "properties": {
+        "totalCount": {
+          "type": "number",
+          "description": "Total number of search results",
+          "example": 1
+        },
+        "incompleteResults": {
+          "type": "boolean",
+          "description": "Tells if pagination is needed",
+          "example": true
+        },
+        "items": {
+          "type": "array",
+          "description": "The search items, can be either users or repositories",
+          "example": [
+            {
+              "login": "gelisam",
+              "id": 49000,
+              "nodeId": "MDQ6VXNlcjQ5MDAw",
+              "avatarUrl": "https://avatars.githubusercontent.com/u/49000?v=4",
+              "gravatarId": "",
+              "url": "https://api.github.com/users/gelisam",
+              "htmlUrl": "https://github.com/gelisam",
+              "followersUrl": "https://api.github.com/users/gelisam/followers",
+              "followingUrl": "https://api.github.com/users/gelisam/following{/other_user}",
+              "gistsUrl": "https://api.github.com/users/gelisam/gists{/gist_id}",
+              "starredUrl": "https://api.github.com/users/gelisam/starred{/owner}{/repo}",
+              "subscriptionsUrl": "https://api.github.com/users/gelisam/subscriptions",
+              "organizationsUrl": "https://api.github.com/users/gelisam/orgs",
+              "reposUrl": "https://api.github.com/users/gelisam/repos",
+              "eventsUrl": "https://api.github.com/users/gelisam/events{/privacy}",
+              "receivedEventsUrl": "https://api.github.com/users/gelisam/received_events",
+              "type": "User",
+              "siteAdmin": false,
+              "score": 1,
+              "name": "Samuel Gélineau",
+              "company": "@simspace",
+              "blog": "gelisam.com",
+              "location": "Montréal",
+              "email": "(my username)@gmail.com",
+              "hireable": null,
+              "bio": null,
+              "twitterUsername": null,
+              "publicRepos": 121,
+              "publicGists": 81,
+              "followers": 209,
+              "following": 26,
+              "createdAt": "2009-01-24T18:29:44Z",
+              "updatedAt": "2021-01-30T19:06:41Z"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
