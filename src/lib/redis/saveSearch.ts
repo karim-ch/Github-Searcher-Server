@@ -18,8 +18,8 @@ async function saveSearch({ type, query, data }: Cache): Promise<string> {
       (error, result) => {
         if (error) reject(error);
         resolve(result);
-      },
-    ),
+      }
+    )
   );
 }
 

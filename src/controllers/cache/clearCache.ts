@@ -1,13 +1,15 @@
 import { Response, Request } from 'express';
-import { reset } from '@lib/redis';
+import { resetCache } from '@lib/redis';
 
-async function clearCache(request: Request, response: Response): Promise<Response> {
+async function clearCache(
+  request: Request,
+  response: Response
+): Promise<Response> {
   try {
-    const result = await reset();
+    const result = await resetCache();
 
     return response.status(200).json(result);
   } catch (error) {
-    console.error(error);
     return response.sendStatus(500);
   }
 }

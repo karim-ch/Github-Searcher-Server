@@ -8,4 +8,6 @@ const server = createServer(app);
 
 const port = getEnv('PORT', 7000);
 
-server.listen(port, () => console.info(`Server is up and listening on ${port}`));
+server.listen(port, () =>
+  console.info(`Server is up and listening on ${port}`)
+);

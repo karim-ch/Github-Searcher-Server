@@ -21,7 +21,7 @@ async function search({ type, query }: SearchQuery): Promise<GithubSearch> {
   const cachedResults = await getCachedSearch({ type, query });
   if (cachedResults) return cachedResults;
   const data = await githubSearch({ type, query });
-  await saveSearch({ type, query, data });
+  if (data) await saveSearch({ type, query, data });
   return data;
 }
 

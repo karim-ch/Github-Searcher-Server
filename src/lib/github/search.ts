@@ -8,9 +8,11 @@ interface SearchQuery {
   query?: string;
 }
 
-async function search({ type, query = '' }: SearchQuery): Promise<GithubSearch> {
+async function search({
+  type,
+  query = '',
+}: SearchQuery): Promise<GithubSearch> {
   try {
-    console.log('fetching from github');
     const { data } = await client.request(`GET /search/${type}?q=${query}`);
     const enrichedData = type === 'users' ? await enrichUser(data) : data;
     return camelcaseKeys(enrichedData, { deep: true });

@@ -11,7 +11,7 @@ function getCachedSearch({ type, query }: SearchQuery): Promise<GithubSearch> {
     client.get(`${type}_${query}`, (error, result) => {
       if (error) reject(error);
       resolve(JSON.parse(result));
-    }),
+    })
   );
 }
 

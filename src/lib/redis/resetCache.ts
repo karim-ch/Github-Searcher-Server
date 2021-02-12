@@ -1,12 +1,12 @@
 import client from './client';
 
-async function getAll(): Promise<string> {
+async function resetCache(): Promise<string> {
   return new Promise((resolve, reject) =>
-    client.get('*', (error, result) => {
+    client.flushall((error, result) => {
       if (error) reject(error);
       resolve(result);
     })
   );
 }
 
-export default getAll;
+export default resetCache;
