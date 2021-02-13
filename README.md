@@ -53,7 +53,7 @@ Executes your generated build files: `npm run start`
 Lint the application: `npm run lint:fix`
 
 ## 1.4. Swagger documentation
-After running the development server by `npm run dev`, go to the following url `http://locahost:7000` 
+After running the development server by `npm run dev`, go to the following url `http://locahost:7000/swagger` 
 (with 7000 is the port you set in the step 1.2)
 to browse the api endpoints documentation and examples.
 
@@ -115,9 +115,9 @@ This project was build with the following dependencies:
     |- index.ts
 | test
 ```
-* **index.ts** : is the main file of the application, it runs the http server of our express app
+* **index.ts** : is the main file of the application, it runs the http server of our express app.
 
-* **app.ts** : is the express server, it uses the **applyRoutes** helper to use an array of routes defined in the controllers/
+* **app.ts** : is the express application, it uses the **applyRoutes** helper defined in utils/ to use an array of routes defined in controllers/
 
 * **controllers/**: is a folder containing the app routes grouped in sub-folders based on the route's context, 
   each route contains the call to a service and exports the handler, path (i.e. /api/search...) and type (i.e. GET, POST...) to the **applyRoutes** helper.
@@ -128,7 +128,7 @@ This project was build with the following dependencies:
 
 * **lib/**: Contains native calls to database, in memory cache or external apis.
 
-* **utils/**: Contains of subset of helper functions, constants to be used everywhere in the server.
+* **utils/**: Contains of subset of helper functions & constants, ... to be used everywhere in the server.
 
 * **types/**: This is where the typescript interfaces, types are defined.
 
@@ -139,7 +139,7 @@ This endpoint requires a body containing a **type** and **query** to retrieve a 
 
 Initially, if the frontend calls this endpoint, the services will check if there's any data in the redis cache by the provided **type** and **query** combination: 
 - If there's a cached data, it will be returned directly.
-- If no cached data is found, the service will call the github client to affect a GET /{**type**}&q={**query**} with the type being an enum between **users | repositories**, and the query is a string
+- If no cached data is found, the service will call the github client to affect a GET /{**type**}&q={**query**} with the type being an enum between **users | repositories**, and the query is a string.
 - If the search data returned from github, cache it in redis for 2 hours and return the data to the frontend
 
 The cache architecture is based on simple key value pairs.
@@ -147,23 +147,24 @@ The cache architecture is based on simple key value pairs.
 If the user searched for a query = "fakeUser" and type = "users", it will be stored this way
 ```
 > SET KEY: "users_fakeUser"
-> SET VALUE: "{stringified object of the user...}"
+  VALUE: "{stringified object of the users...}"
 > SET EXP: 60*60*2 => will expire in 2 hours
 ```
 
 If the user searched for a query = "react" and type = "repositories", it will be: 
 ```
 > SET KEY: "repositories_fakeUser"
-> SET VALUE: "{stringified object of the repositories...}"
+  VALUE: "{stringified object of the repositories...}"
 > SET EXP: 60*60*2 => will expire in 2 hours
 ```
 
-the result will be something like this: 
+The overall redis database will contain something like this: 
 ```
 users_karim: "{ incompleteResults: true, itemsCount: 95, items: [ item1, item2 ...] }"
 repositories_react: "{ incompleteResults: true, itemsCount: 120, items: [item1... ] }"
 users_alice: "{ incompleteResults: false, itemsCount: 10, items: [...] }"
 repositories_eslint: "{ incompleteResults: true, itemsCount: 10, items: [...] }"
+...
 ```
 
 When the app request retrieving a cached query, we will make a native get to the redis client querying **{type}_{query}**
